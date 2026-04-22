@@ -1,0 +1,88 @@
+--release
+--output
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects
+--lib
+C:\Android\platforms\android-36\android.jar
+--min-api
+21
+C:\Android\tools\..\extras\b4a_local\unpacked-b4ashared-63888229486000\dex_v1\b4ashared.zip
+c:\android\tools\..\extras\b4a_local\unpacked-relinker-1.3.1-63728927316000\jars\classes.zip
+c:\android\tools\..\extras\b4a_local\unpacked-android-gif-drawable-1.2.29-63888568832000\jars\b4a_jni.zip
+c:\android\tools\..\extras\b4a_local\unpacked-android-gif-drawable-1.2.29-63888568832000\jars\classes.zip
+c:\android\tools\..\extras\b4a_remote\androidx\multidex\multidex\2.0.1\unpacked-multidex-2.0.1\jars\classes.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-core-63888229486000\dex_v1\core.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-xui-63888229488000\dex_v1\xui.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-bitmapcreator-63888229486000\dex_v1\bitmapcreator.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-dateutils-63888229486000\dex_v1\dateutils.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-xcustomlistview-63888229488000\dex_v1\xcustomlistview.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-ime-63888229486000\dex_v1\ime.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-javaobject-63888229486000\dex_v1\javaobject.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63888229488000\dex_v1\stringutils.zip
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\pl\droidsonroids\gif\R.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\pl\droidsonroids\gif\R$drawable.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\pl\droidsonroids\gif\R$attr.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\pl\droidsonroids\gif\R$style.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\pl\droidsonroids\gif\R$styleable.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xloadingindicator$ResumableSub_MainLoop.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\main$ResumeMessage.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\main$WaitForLayout.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\anotherprogressbar.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\main$1.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xgifview.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xtimedtemplate$ResumableSub_Show.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xsignaturetemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xlongtexttemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xsearchtemplate$ResumableSub_Show.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xloadingindicator.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\R.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xcolortemplate$ResumableSub_Show.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\swiftbutton.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\starter$starter_BR.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xlisttemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xplusminus.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\R$drawable.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\main$B4AMenuItemsClickListener.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\scrollinglabel.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xswitch.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xcolortemplate$_colorpickerpart.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\R$attr.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\anotherprogressbar$ResumableSub_BusyLoop.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xdialog.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xdatetemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\xuiviewsutils.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xfloattextfield$ResumableSub_SwitchFromPasswordToRegular.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xdatetemplate$ResumableSub_Show.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xformatter.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\madewithlove.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xplusminus$ResumableSub_StartDownLoop.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\animatedcounter.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\R$style.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xtimedtemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\roundslider.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xseekbar.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xlisttemplate$ResumableSub_Show.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xcombobox.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4ximageview.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xradiobutton$ResumableSub_SetValueImpl.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xfloattextfield.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xbreadcrumb.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xradiobutton.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\starter$1.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\R$styleable.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xinputtemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\starter.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\main$HandleKeyDelayed.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xdialog$ResumableSub_Show.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\scrollinglabel$ResumableSub_StartScrolling.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\starter$2.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xdialog$ResumableSub_ShowTemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xcombobox$ResumableSub_RaiseEvent.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xinputtemplate$ResumableSub_Show.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xswitch$ResumableSub_SetValueImpl.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xsearchtemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xdialog$ResumableSub_ShowCustom.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\main.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xcolortemplate.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xprogressdialog.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\b4xformatter$_b4xformatdata.dex
+C:\Mac\Home\Desktop\Mobile_Dev\5 band Resistor Calculator\Objects\dexed\b4a\example\designerscripts\LS_searchtemplate.dex

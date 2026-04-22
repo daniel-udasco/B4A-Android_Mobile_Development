@@ -1,0 +1,217 @@
+﻿Build1=Default,b4a.example
+File1=04b_30__.ttf
+File2=BG.png
+File3=BGdark.png
+File4=coolvetica.ttf
+File5=Layout.bal
+File6=resistor_red.png
+File7=rick.gif
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+Library3=xui views
+Library4=b4xgifview
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=7
+NumberOfLibraries=4
+NumberOfModules=1
+Version=13.4
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: 5-Band Resistor Calc
+	#VersionCode: 1
+	#VersionName: 1.0
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private Spinner1 As Spinner
+	Private Spinner2 As Spinner
+	Private Spinner3 As Spinner
+	Private Spinner4 As Spinner
+	Private Spinner5 As Spinner
+	
+	Private item As List
+	Private ColorNames As List
+	Private DigitValues As List
+	Private MultiplierValues As List
+	Private ColorValues As List
+	
+	Private Panel2 As Panel
+	Private Panel3 As Panel
+	Private Panel4 As Panel
+	Private Panel5 As Panel
+	Private Panel6 As Panel
+	Private Label1 As Label
+	Private Label2 As Label
+	Private Label3 As Label
+	Private Label4 As Label
+	Private Label5 As Label
+
+	Private Label6 As Label
+	Private Label7 As Label
+	Private Label8 As Label
+	Private Label9 As Label
+	Private Label As Label
+	Private B4XGifView1 As B4XGifView
+	Private isclick As Boolean
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("Layout")
+	Dim tf As Typeface = Typeface.LoadFromAssets("coolvetica.ttf")
+	Label.Typeface = tf
+	Label1.Typeface =  tf
+	Label2.Typeface = tf
+	Label3.Typeface = tf
+	Label4.Typeface = tf
+	Label5.Typeface = tf
+	Label6.Typeface = tf
+	Label7.Typeface = tf
+	Label8.Typeface = tf
+	Label9.Typeface = tf
+	item.Initialize
+	Spinner1.DropdownBackgroundColor = 0xffD3D3D3
+	Spinner2.DropdownBackgroundColor = 0xffD3D3D3
+	Spinner3.DropdownBackgroundColor = 0xffD3D3D3
+	Spinner4.DropdownBackgroundColor = 0xffD3D3D3
+	Spinner5.DropdownBackgroundColor = 0xffD3D3D3
+	ColorNames.Initialize
+	DigitValues.Initialize
+	MultiplierValues.Initialize
+	ColorValues.Initialize
+	ColorNames.AddAll(Array As String("black","brown","red","orange","yellow","green","blue","violet","gray","white","gold","silver"))
+	DigitValues.AddAll(Array As Int(0,1,2,3,4,5,6,7,8,9,-1,-1)) 'gold/silver no digit
+	MultiplierValues.AddAll(Array As Double(1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000,0.1,0.01))
+	ColorValues.AddAll(Array As Int( _
+		Colors.Black, _
+		0xFF964B00, _
+		Colors.Red, _
+		0xFFFFA500, _
+		Colors.Yellow, _
+		Colors.Green, _
+		Colors.Blue, _
+		0xFF7F00FF, _
+		Colors.Gray, _
+		Colors.White, _
+		0xFFFFD700, _
+		0xFF999B9B))
+	item.AddAll(Array As String("Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Violet", "Gray", "White"))
+	Spinner1.AddAll(item)
+	Spinner2.AddAll(item)
+	Spinner3.AddAll(item)
+	Spinner4.AddAll(Array As String("x1 Black", "x10 Brown", "x100 Red", "x1k Orange", "x10k Yellow", "x100k Green", "x1M Blue", "x10M Violet", "x100M Gray", "x1G White", "x0.1 Gold", "x0.01 Silver"))
+	Spinner5.AddAll(Array As String("±1% Brown", "±2% Red", "±3% Orange", "±4% Yellow", "±0.5% Green", "±0.25% Blue", "±0.10% Violet", "±0.05% Gray", "±5% Gold", "±10% Silver"))
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub Button1_Click
+	Dim d1 As Int = GetDigit(Spinner1.SelectedItem)
+	Dim d2 As Int = GetDigit(Spinner2.SelectedItem)
+	Dim d3 As Int = GetDigit(Spinner3.SelectedItem)
+	Dim multiplier As Double = GetMultiplier(Spinner4.SelectedItem)
+	
+	Dim resistance As Double
+	resistance = (d1 * 100 + d2 * 10 + d3) * multiplier
+	
+	Label6.Text = d1 & d2 & d3
+	Label7.Text = Spinner4.SelectedItem.SubString2(0, Spinner4.SelectedItem.IndexOf(" ")) & "Ω"
+	Label8.Text = Spinner5.SelectedItem.SubString2(0, Spinner5.SelectedItem.IndexOf("%")+1)
+	Label9.Text = FormatResistance(resistance) & " " & Spinner5.SelectedItem.SubString2(0,Spinner5.SelectedItem.IndexOf("%")+1)
+End Sub
+
+Private Sub FormatResistance(value As Double) As String
+	If value >= 1000000000 Then
+		Return NumberFormat(value / 1000000000, 1, 2) & " GΩ"
+	Else If value >= 1000000 Then
+		Return NumberFormat(value / 1000000, 1, 2) & " MΩ"
+	Else If value >= 1000 Then
+		Return NumberFormat(value / 1000, 1, 2) & " kΩ"
+	Else
+		Return value & " Ω"
+	End If
+End Sub
+
+'=== CORE LOOKUP FUNCTION ===
+Private Sub GetIndex(name As String) As Int
+	name = name.ToLowerCase
+	
+	For i = 0 To ColorNames.Size - 1
+		If name.Contains(ColorNames.Get(i)) Then
+			Return i
+		End If
+	Next
+	
+	Return 0
+End Sub
+
+'=== DIGIT ===
+Private Sub GetDigit(name As String) As Int
+	Dim i As Int = GetIndex(name)
+	Return DigitValues.Get(i)
+End Sub
+
+'=== MULTIPLIER ===
+Private Sub GetMultiplier(name As String) As Double
+	Dim i As Int = GetIndex(name)
+	Return MultiplierValues.Get(i)
+End Sub
+
+'=== COLOR ===
+Private Sub GetColor(name As String) As Int
+	Dim i As Int = GetIndex(name)
+	Return ColorValues.Get(i)
+End Sub
+
+Private Sub Spinner3_ItemClick (Position As Int, Value As Object)
+	Panel4.Color = GetColor(Value)
+End Sub
+
+Private Sub Spinner2_ItemClick (Position As Int, Value As Object)
+	Panel3.Color = GetColor(Value)
+End Sub
+
+Private Sub Spinner1_ItemClick (Position As Int, Value As Object)
+	Panel2.Color = GetColor(Value)
+End Sub
+
+Private Sub Spinner5_ItemClick (Position As Int, Value As Object)
+	Panel6.Color = GetColor(Value)
+End Sub
+
+Private Sub Spinner4_ItemClick (Position As Int, Value As Object)
+	Panel5.Color = GetColor(Value)
+End Sub
+
+Private Sub ListView1_ItemClick (Position As Int, Value As Object)
+	
+End Sub
