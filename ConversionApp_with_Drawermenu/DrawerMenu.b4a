@@ -1,0 +1,281 @@
+﻿Build1=Default,b4a.example
+File1=HOME.bal
+File2=main.bal
+File3=page1.bal
+File4=page2.bal
+File5=page3.bal
+File6=page4.bal
+File7=page5.bal
+File8=page6.bal
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+Library3=b4xdrawer
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=8
+NumberOfLibraries=3
+NumberOfModules=1
+Version=13.4
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Drawer Unit Converter App
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private Drawer As B4XDrawer
+	Private pnlMain As Panel
+	Private pnlMenu As Panel
+
+	'Private lblMenu As Label
+	Private lblTitle As Label
+	Private btnHome, btnPage1, btnPage2, btnPage3, btnPage4, btnPage5, btnPage6 As Button
+	
+	Private EditText1 As EditText
+	Private Label1 As Label
+	Private units As String
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("main")
+	
+	Drawer.Initialize(Me, "Drawer", Activity, 260dip)
+	Drawer.CenterPanel.BringToFront
+	Drawer.LeftPanel.BringToFront
+
+	pnlMain = Drawer.CenterPanel
+	pnlMenu = Drawer.LeftPanel
+
+	pnlMenu.Color = Colors.RGB(33,150,243)
+
+	CreateMenu
+	ShowHome
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub btnMenu_Click
+	Drawer.LeftOpen = Not(Drawer.LeftOpen)
+End Sub
+
+Sub CreateMenu
+	Dim btnHome, btnPage1, btnPage2 As Button
+	btnHome.Initialize("btnHome")
+	btnHome.Text = "Home"
+	btnPage1.Initialize("btnPage1")
+	btnPage1.Text = "Inches To Centimeter"
+	btnPage2.Initialize("btnPage2")
+	btnPage2.Text = "Centimeter To Inches"
+	btnPage3.Initialize("btnPage3")
+	btnPage3.Text = "Inches To Feet"
+	btnPage4.Initialize("btnPage4")
+	btnPage4.Text = "Feet To Inches"
+	btnPage5.Initialize("btnPage5")
+	btnPage5.Text = "Centimeter To Meter"
+	btnPage6.Initialize("btnPage6")
+	btnPage6.Text = "Meter To Centimeter"
+	
+	For Each b As Button In Array(btnHome, btnPage1, btnPage2, btnPage3, btnPage4, btnPage5, btnPage6)
+		b.TextSize = 16
+		b.Gravity = Gravity.LEFT + Gravity.CENTER_VERTICAL
+		b.Color = Colors.Transparent
+		b.TextColor = Colors.White
+		pnlMenu.AddView(b, 10dip, 0, 240dip, 50dip)
+	Next
+	btnHome.Top = 120dip
+	btnPage1.Top = 180dip
+	btnPage2.Top = 240dip
+	btnPage3.Top = 300dip
+	btnPage4.Top = 360dip
+	btnPage5.Top = 420dip
+	btnPage6.Top = 480dip
+End Sub
+
+'--- Click Events ---
+
+Sub btnHome_Click
+	Drawer.LeftOpen = False
+	ShowHome
+End Sub
+
+Sub btnPage1_Click
+	Drawer.LeftOpen = False
+	ShowPage1
+End Sub
+
+Sub btnPage2_Click
+	Drawer.LeftOpen = False
+	ShowPage2
+End Sub
+
+Sub btnPage3_Click
+	Drawer.LeftOpen = False
+	ShowPage3
+End Sub
+
+Sub btnPage4_Click
+	Drawer.LeftOpen = False
+	ShowPage4
+End Sub
+
+Sub btnPage5_Click
+	Drawer.LeftOpen = False
+	ShowPage5
+End Sub
+
+Sub btnPage6_Click
+	Drawer.LeftOpen = False
+	ShowPage6
+End Sub
+
+'--- Show Layout Subs ---
+
+Sub ShowHome
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("home")
+	lblTitle.Text = "Home"
+End Sub
+
+Sub ShowPage1
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page1")
+	lblTitle.Text = "Inches To Centimeter"
+End Sub
+
+Sub ShowPage2
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page2")
+	lblTitle.Text = "Centimeter To Inches"
+End Sub
+
+Sub ShowPage3
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page3")
+	lblTitle.Text = "Inches To Feet"
+End Sub
+
+Sub ShowPage4
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page4")
+	lblTitle.Text = "Feet To Inches"
+End Sub
+
+Sub ShowPage5
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page5")
+	lblTitle.Text = "Centimeter To Meter"
+End Sub
+
+Sub ShowPage6
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page6")
+	lblTitle.Text = "Meter To Centimeter"
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	If KeyCode = KeyCodes.KEYCODE_BACK And Drawer.LeftOpen Then
+		Drawer.LeftOpen = False
+		Return True
+	End If
+	Return False
+End Sub
+
+Private Sub pnl6_Click
+	ShowPage6
+End Sub
+
+Private Sub pnl5_Click
+	ShowPage5
+End Sub
+
+Private Sub pnl4_Click
+	ShowPage4
+End Sub
+
+Private Sub pnl3_Click
+	ShowPage3
+End Sub
+
+Private Sub pnl2_Click
+	ShowPage2
+End Sub
+
+Private Sub pnl1_Click
+	ShowPage1
+End Sub
+
+Private Sub Button1_Click
+	' 1. Check if the EditText is empty to prevent a crash
+	If EditText1.Text = "" Then
+		MsgboxAsync("Please enter a value", "Input Error")
+		Return
+	End If
+
+	Dim Ans As Double
+	Dim units As String ' Ensure this is declared if not in Globals
+
+	Select lblTitle.Text
+		Case "Inches To Centimeter"
+			Ans = (EditText1.Text) * 2.54
+			units = " cm"
+            
+		Case "Centimeter To Inches"
+			Ans = (EditText1.Text) / 2.54
+			units = " in"
+            
+		Case "Inches To Feet"
+			Ans = (EditText1.Text) / 12
+			units = " ft"
+            
+		Case "Feet To Inches"
+			Ans = (EditText1.Text) * 12
+			units = " in"
+            
+		Case "Centimeter To Meter"
+			Ans = (EditText1.Text) / 100
+			units = " m"
+            
+		Case "Meter To Centimeter"
+			Ans = (EditText1.Text) * 100
+			units = " cm"
+            
+		Case Else
+			Ans = 0
+			units = ""
+	End Select
+
+	' 2. Use "&" instead of "+" to join numbers and text
+	' NumberFormat helps round the decimal so it doesn't look messy
+	Label1.Text = NumberFormat(Ans, 1, 2) & units
+End Sub
