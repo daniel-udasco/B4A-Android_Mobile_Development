@@ -1,0 +1,247 @@
+﻿Build1=Default,com.school.recipemanager
+File1=layout.bal
+FileGroup1=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+Library3=sql
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=3
+NumberOfModules=1
+Version=13.4
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Recipe Manager
+	#VersionCode: 1
+	#VersionName: 1.0
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	Private xui As XUI
+	Private SQL1 As SQL
+	Private SelectedRecipeId As Int = -1
+End Sub
+
+Sub Globals
+	Private lblHeader As Label
+	Private lblName As Label
+	Private lblIngredients As Label
+	Private lblInstructions As Label
+	Private lblList As Label
+	Private txtName As EditText
+	Private txtIngredients As EditText
+	Private txtInstructions As EditText
+	Private btnSave As Button
+	Private btnDelete As Button
+	Private btnClear As Button
+	Private lvRecipes As ListView
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.Title = "Recipe Manager"
+	Activity.Color = Colors.RGB(245, 247, 250)
+	If FirstTime Then
+		SetupDatabase
+	End If
+	Activity.LoadLayout("layout")
+	BuildLayout
+	LoadRecipes
+	ClearForm
+End Sub
+
+Sub Activity_Resume
+	LoadRecipes
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Private Sub SetupDatabase
+	If SQL1.IsInitialized = False Then
+		SQL1.Initialize(File.DirInternal, "recipes.db", True)
+	End If
+	SQL1.ExecNonQuery("CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, ingredients TEXT, instructions TEXT)")
+	SeedRecipesIfEmpty
+End Sub
+
+Private Sub SeedRecipesIfEmpty
+	Dim rs As Cursor = SQL1.ExecQuery("SELECT COUNT(*) AS total FROM recipes")
+	rs.Position = 0
+	If rs.GetInt("total") = 0 Then
+		SQL1.ExecNonQuery2("INSERT INTO recipes (name, ingredients, instructions) VALUES (?, ?, ?)", _
+			Array As Object("Chicken Adobo", "Chicken, soy sauce, vinegar, garlic, bay leaf, pepper", "Marinate chicken. Simmer with soy sauce, vinegar, garlic, bay leaf, and pepper until tender."))
+		SQL1.ExecNonQuery2("INSERT INTO recipes (name, ingredients, instructions) VALUES (?, ?, ?)", _
+			Array As Object("Garlic Fried Rice", "Cooked rice, garlic, oil, salt", "Toast garlic in oil. Add rice and salt. Stir fry until hot."))
+		SQL1.ExecNonQuery2("INSERT INTO recipes (name, ingredients, instructions) VALUES (?, ?, ?)", _
+			Array As Object("Mango Float", "Graham crackers, cream, condensed milk, mangoes", "Layer crackers, sweet cream, and mango slices. Chill before serving."))
+	End If
+	rs.Close
+End Sub
+
+Private Sub BuildLayout
+	Activity.RemoveAllViews
+
+	lblHeader.Initialize("")
+	lblHeader.Text = "Recipe Manager"
+	lblHeader.TextSize = 24
+	lblHeader.TextColor = Colors.RGB(31, 41, 55)
+	lblHeader.Typeface = Typeface.DEFAULT_BOLD
+	lblHeader.Gravity = Gravity.CENTER
+	Activity.AddView(lblHeader, 10dip, 6dip, 100%x - 20dip, 38dip)
+
+	lblName.Initialize("")
+	lblName.Text = "Recipe Name"
+	lblName.TextSize = 14
+	lblName.TextColor = Colors.RGB(55, 65, 81)
+	Activity.AddView(lblName, 10dip, 52dip, 100%x - 20dip, 22dip)
+
+	txtName.Initialize("txtName")
+	txtName.Hint = "Example: Chicken Adobo"
+	txtName.SingleLine = True
+	txtName.TextSize = 16
+	txtName.Color = Colors.White
+	Activity.AddView(txtName, 10dip, 76dip, 100%x - 20dip, 44dip)
+
+	lblIngredients.Initialize("")
+	lblIngredients.Text = "Ingredients"
+	lblIngredients.TextSize = 14
+	lblIngredients.TextColor = Colors.RGB(55, 65, 81)
+	Activity.AddView(lblIngredients, 10dip, 126dip, 100%x - 20dip, 22dip)
+
+	txtIngredients.Initialize("txtIngredients")
+	txtIngredients.Hint = "List the ingredients"
+	txtIngredients.SingleLine = False
+	txtIngredients.Gravity = Gravity.TOP
+	txtIngredients.TextSize = 15
+	txtIngredients.Color = Colors.White
+	Activity.AddView(txtIngredients, 10dip, 150dip, 100%x - 20dip, 76dip)
+
+	lblInstructions.Initialize("")
+	lblInstructions.Text = "Instructions"
+	lblInstructions.TextSize = 14
+	lblInstructions.TextColor = Colors.RGB(55, 65, 81)
+	Activity.AddView(lblInstructions, 10dip, 232dip, 100%x - 20dip, 22dip)
+
+	txtInstructions.Initialize("txtInstructions")
+	txtInstructions.Hint = "Write the cooking steps"
+	txtInstructions.SingleLine = False
+	txtInstructions.Gravity = Gravity.TOP
+	txtInstructions.TextSize = 15
+	txtInstructions.Color = Colors.White
+	Activity.AddView(txtInstructions, 10dip, 256dip, 100%x - 20dip, 86dip)
+
+	btnSave.Initialize("btnSave")
+	btnSave.Text = "Save"
+	btnSave.TextSize = 15
+	Activity.AddView(btnSave, 10dip, 352dip, 32%x - 12dip, 44dip)
+
+	btnDelete.Initialize("btnDelete")
+	btnDelete.Text = "Delete"
+	btnDelete.TextSize = 15
+	Activity.AddView(btnDelete, 34%x, 352dip, 32%x - 12dip, 44dip)
+
+	btnClear.Initialize("btnClear")
+	btnClear.Text = "Clear"
+	btnClear.TextSize = 15
+	Activity.AddView(btnClear, 67%x, 352dip, 32%x - 12dip, 44dip)
+
+	lblList.Initialize("")
+	lblList.Text = "Saved Recipes"
+	lblList.TextSize = 16
+	lblList.TextColor = Colors.RGB(31, 41, 55)
+	lblList.Typeface = Typeface.DEFAULT_BOLD
+	Activity.AddView(lblList, 10dip, 406dip, 100%x - 20dip, 24dip)
+
+	lvRecipes.Initialize("lvRecipes")
+	lvRecipes.SingleLineLayout.Label.TextSize = 16
+	lvRecipes.SingleLineLayout.Label.TextColor = Colors.RGB(17, 24, 39)
+	Activity.AddView(lvRecipes, 10dip, 434dip, 100%x - 20dip, 100%y - 444dip)
+End Sub
+
+Private Sub LoadRecipes
+	If SQL1.IsInitialized = False Then Return
+	If lvRecipes.IsInitialized = False Then Return
+
+	lvRecipes.Clear
+	Dim rs As Cursor = SQL1.ExecQuery("SELECT id, name FROM recipes ORDER BY name COLLATE NOCASE")
+	For i = 0 To rs.RowCount - 1
+		rs.Position = i
+		lvRecipes.AddSingleLine2(rs.GetString("name"), rs.GetInt("id"))
+	Next
+	rs.Close
+
+	If lvRecipes.Size = 0 Then
+		lvRecipes.AddSingleLine2("No recipes yet. Add one above.", -1)
+	End If
+End Sub
+
+Private Sub ClearForm
+	SelectedRecipeId = -1
+	txtName.Text = ""
+	txtIngredients.Text = ""
+	txtInstructions.Text = ""
+	btnSave.Text = "Save"
+End Sub
+
+Sub btnSave_Click
+	Dim recipeName As String = txtName.Text.Trim
+	If recipeName = "" Then
+		xui.MsgboxAsync("Please enter a recipe name.", "Missing Information")
+		Return
+	End If
+
+	If SelectedRecipeId = -1 Then
+		SQL1.ExecNonQuery2("INSERT INTO recipes (name, ingredients, instructions) VALUES (?, ?, ?)", _
+			Array As Object(recipeName, txtIngredients.Text.Trim, txtInstructions.Text.Trim))
+		ToastMessageShow("Recipe added.", False)
+	Else
+		SQL1.ExecNonQuery2("UPDATE recipes SET name = ?, ingredients = ?, instructions = ? WHERE id = ?", _
+			Array As Object(recipeName, txtIngredients.Text.Trim, txtInstructions.Text.Trim, SelectedRecipeId))
+		ToastMessageShow("Recipe updated.", False)
+	End If
+
+	LoadRecipes
+	ClearForm
+End Sub
+
+Sub btnDelete_Click
+	If SelectedRecipeId = -1 Then
+		xui.MsgboxAsync("Select a recipe from the list first.", "Nothing Selected")
+		Return
+	End If
+
+	SQL1.ExecNonQuery2("DELETE FROM recipes WHERE id = ?", Array As Object(SelectedRecipeId))
+	ToastMessageShow("Recipe deleted.", False)
+	LoadRecipes
+	ClearForm
+End Sub
+
+Sub btnClear_Click
+	ClearForm
+End Sub
+
+Sub lvRecipes_ItemClick (Position As Int, Value As Object)
+	Dim recipeId As Int = Value
+	If recipeId = -1 Then Return
+
+	SelectedRecipeId = recipeId
+	Dim rs As Cursor = SQL1.ExecQuery2("SELECT name, ingredients, instructions FROM recipes WHERE id = ?", Array As String(recipeId))
+	If rs.RowCount > 0 Then
+		rs.Position = 0
+		txtName.Text = rs.GetString("name")
+		txtIngredients.Text = rs.GetString("ingredients")
+		txtInstructions.Text = rs.GetString("instructions")
+		btnSave.Text = "Update"
+	End If
+	rs.Close
+End Sub
